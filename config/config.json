@@ -11,7 +11,8 @@
         "dialectOptions": {
           "collate": "utf8_general_ci"
         }
-      }
+      },
+    "timezone": "+03:00"
   },
   "test": {
     "username": "root",
@@ -25,7 +26,8 @@
         "dialectOptions": {
           "collate": "utf8_general_ci"
         }
-    }
+    },
+    "timezone": "+03:00"
   },
   "production": {
     "username": "root",
@@ -39,7 +41,7 @@
         "dialectOptions": {
           "collate": "utf8_general_ci"
         }
-
-    }
+    },
+    "timezone": "+03:00"
   }
 }
