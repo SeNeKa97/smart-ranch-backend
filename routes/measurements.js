@@ -10,14 +10,14 @@ router.post('/', function(req, res, next) {
 
 	measurementController.create(body.idType, body.idBoard, body.value)
 		.then(measurements => res.json(measurements))
-		.catch(err => res.json({error: err}));
+		.catch(err => res.status(400).json({error: err}));
 });
 
 
 router.get('/', function(req, res, next) {
 	measurementController.getAll()
 		.then(measurements => res.json(measurements))
-		.catch(err => res.json({error: err}));
+		.catch(err => res.status(400).json({error: err}));
 });
 
 
@@ -27,7 +27,7 @@ router.get('/type/:id&:idtype', function(req, res, next) {
 
 	measurementController.filterByType(id, idType)
 		.then(measurements => res.json(measurements))
-		.catch(err => res.json({error: err}));
+		.catch(err => res.status(400).json({error: err}));
 });
 
 
@@ -38,7 +38,7 @@ router.get('/period/:id&:from&:to', function(req, res, next) {
 
 	measurementController.filterByPeriod(id, from, to)
 		.then(measurements => res.json(measurements))
-		.catch(err => res.json({error: err}));
+		.catch(err => res.status(400).json({error: err}));
 });
 
 
@@ -47,7 +47,7 @@ router.get('/:id', function(req, res, next) {
 
 	measurementController.getById(id)
 		.then(measurement => res.json(measurement))
-		.catch(err => res.json({error: err}));
+		.catch(err => res.status(400).json({error: err}));
 });
 
 /*

@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
     	allowNull: false
     }
   }, {
-  	timestamps: false
+  	timestamps: false,
+    charset: 'utf8',
+    collate: 'utf8_unicode_ci'
   });
   Room.associate = function(models) {
   	Room.belongsTo(models.Board, {

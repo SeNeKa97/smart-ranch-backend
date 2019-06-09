@@ -18,7 +18,9 @@ module.exports = (sequelize, DataTypes) => {
     	allowNull: false
     }
   }, {
-  	timestamps: false
+  	timestamps: false,
+    charset: 'utf8',
+    collate: 'utf8_unicode_ci'
   });
   Measurement.associate = function(models) {
   	Measurement.belongsTo( models.MeasurementType, {

@@ -6,7 +6,9 @@ module.exports = (sequelize, DataTypes) => {
     	allowNull: false
     }
   }, {
-  	timestamps: false
+  	timestamps: false,
+    charset: 'utf8',
+    collate: 'utf8_unicode_ci'
   });
   MeasurementType.associate = function(models) {
     // associations can be defined here

@@ -15,7 +15,6 @@ module.exports = {
 	},
 
 	update(id, value, expirationDate){
-		console.log(expirationDate);
 
 		return Token
 		.findOne({
@@ -45,7 +44,10 @@ module.exports = {
 		.findOne({
 			where: {
 				id: id
-			}
+			},
+			include: [
+				models.User
+			]
 		});
 	},
 

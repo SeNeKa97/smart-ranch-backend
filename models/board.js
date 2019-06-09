@@ -11,7 +11,9 @@ module.exports = (sequelize, DataTypes) => {
     	validate: { len: [10,10] }
     }
   }, {
-  	timestamps: false
+  	timestamps: false,
+    charset: 'utf8',
+    collate: 'utf8_unicode_ci'
   });
   Board.associate = function(models) {
     // associations can be defined here

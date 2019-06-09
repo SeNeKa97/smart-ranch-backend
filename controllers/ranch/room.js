@@ -40,7 +40,10 @@ module.exports = {
 		.findOne({
 			where: {
 				id: id
-			}
+			},
+			include: [
+            	Board,
+        	]
 		});
 	},
 

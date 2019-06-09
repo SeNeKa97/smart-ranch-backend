@@ -4,23 +4,44 @@
     "password": "1234",
     "database": "rnch",
     "host": "127.0.0.1",
-    "dialect": "mysql"
-
+    "dialect": "mysql",
+    "define": {
+        "charset": "utf8",
+        "timestamps": false,
+        "dialectOptions": {
+          "collate": "utf8_general_ci"
+        }
+      },
+    "timezone": "+03:00"
   },
   "test": {
     "username": "root",
     "password": "1234",
     "database": "rnch",
     "host": "127.0.0.1",
-    "dialect": "mysql"
-
+    "dialect": "mysql",
+    "define": {
+        "charset": "utf8",
+        "timestamps": false,
+        "dialectOptions": {
+          "collate": "utf8_general_ci"
+        }
+    },
+    "timezone": "+03:00"
   },
   "production": {
     "username": "root",
     "password": "1234",
     "database": "rnch",
     "host": "127.0.0.1",
-    "dialect": "mysql"
-
+    "dialect": "mysql",
+    "define": {
+        "charset": "utf8",
+        "timestamps": false,
+        "dialectOptions": {
+          "collate": "utf8_general_ci"
+        }
+    },
+    "timezone": "+03:00"
   }
 }

@@ -22,15 +22,16 @@ router.post('/token', function(req, res, next){
 		.catch(err => res.status(400).json({error: err}));
 });
 
-
+/*
 router.post('/hasrights', function(req, res, next){
 	let token = req.body.token;
-	const ROLE_REQUIRED = 3;
+	const ROLE_REQUIRED = 1;
 
 	auth.hasRights(token, ROLE_REQUIRED)
 		.then(result => res.json(result))
 		.catch(err => res.status(400).json({error: err}));
 });
+*/
 
 
 module.exports = router;
