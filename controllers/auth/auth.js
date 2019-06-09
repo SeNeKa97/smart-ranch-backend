@@ -15,17 +15,31 @@ module.exports = {
 				value: token
 			}
 		})
-		.then(token => {
-			if(!token){
+		.then(tokenFound => {
+			if(!tokenFound){
 				return new Promise((resolve, reject) =>{
 					reject("Token not found!")
 				});
 			}
 			else{
-				if(token.expirationDate < new Date())
+				if(tokenFound.expirationDate < new Date())
 					return new Promise((resolve, reject) =>{
 						reject("Token has expired!")
 					})
+				else{
+					return User.findOne({
+						where: {
+							id: tokenFound.idUser
+						}
+					})
+					.then(userFound => {
+						return {
+							user: userFound.name,
+							token: tokenFound.value,
+							role: userFound.idRole
+						}
+					})
+				}
 				//User
 			}
 
@@ -110,7 +124,23 @@ module.exports = {
 	},
 
 
-	hasRights(token){
+	hasRights(token, roleIdRequired){
+
+		if(token){
+			return this.authorizeWithToken(token)
+				.then(result => {
+					if(result.role < roleIdRequired)
+						return new Promise((resolve, reject) =>{
+							reject("Not enough rights!")
+						});
+					else
+						return true;
+				})
+		} else {
+			return new Promise((resolve, reject) =>{
+				reject("Token not found!")
+			});
+		}
 
 	}
 

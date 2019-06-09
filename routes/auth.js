@@ -23,4 +23,14 @@ router.post('/token', function(req, res, next){
 });
 
 
+router.post('/hasrights', function(req, res, next){
+	let token = req.body.token;
+	const ROLE_REQUIRED = 3;
+
+	auth.hasRights(token, ROLE_REQUIRED)
+		.then(result => res.json(result))
+		.catch(err => res.status(400).json({error: err}));
+});
+
+
 module.exports = router;
