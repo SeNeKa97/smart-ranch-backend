@@ -23,6 +23,8 @@ module.exports = {
 				timestamp: time,
 				value: bundle[i-2]
 			})
+
+			
 		}*/
 		promises[0] =  Measurement.create({
 			idType: 2,

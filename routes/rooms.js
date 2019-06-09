@@ -40,6 +40,7 @@ router.post('/', function(req, res, next) {
 
 router.delete('/:id', function(req, res, next) {
 	const id = req.params.id;
+	const token = req.body.token;
 
 	roomController.delete(id)
 		.then(res.json({success: "room "+id+" deleted"}))
