@@ -26,7 +26,10 @@ module.exports = {
 				name: name,
 				passwordHash: hash(password, {algorithm: 'md5'}),
 				idRole: role
-			})
+			}),
+			reject=>{
+				reject("User not found!");
+			}
 		);
 	},
 
@@ -40,7 +43,10 @@ module.exports = {
 		.then(result=>
 			result.update({
 				lastActivity: activityDate
-			})
+			}),
+			reject=>{
+				reject("User not found!");
+			}
 		);
 	},
 
@@ -58,18 +64,23 @@ module.exports = {
 		.findOne({
 			where: {
 				id: id
-			}
+			},
+			include: [
+				model.Role
+			]
 		});
 	},
 
 	getByCredentials(name, passwordHash){
-		console.log(User);
 		return User
 		.findOne({
 			where: {
 				name: name,
 				passwordHash: passwordHash
-			}
+			},
+			include: [
+				model.Role
+			]
 		});
 	},
 
@@ -87,7 +98,10 @@ module.exports = {
 		.findOne({
 			where: {
 				idRole: idRole
-			}
+			},
+			include: [
+				model.Role
+			]
 		});
 	},
 
