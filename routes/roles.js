@@ -7,15 +7,16 @@ const roleController = require('../controllers').role;
 router.get('/', function(req, res, next) {
 	roleController.getAll()
 		.then(roles => res.json(roles))
-		.catch(err => res.json({error: err}));
+		.catch(err => res.status(400).json({error: err}));
 });
+
 
 router.get('/:id', function(req, res, next) {
 	const id = req.params.id;
 
 	roleController.getById(id)
 		.then(role => res.json(role))
-		.catch(err => res.json({error: err}));
+		.catch(err => res.status(400).json({error: err}));
 });
 
 
