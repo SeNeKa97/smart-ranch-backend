@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
   	timestamps: false,
-    charset: 'utf8',
-    collate: 'utf8_unicode_ci'
+	freezeTableName: true,
+	tableName: 'roles'
   });
   Role.associate = function(models) {
     // associations can be defined here

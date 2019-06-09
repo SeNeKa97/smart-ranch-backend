@@ -18,8 +18,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
   	timestamps: false,
-    charset: 'utf8',
-    collate: 'utf8_unicode_ci'
+	freezeTableName: true,
+	tableName: 'users'
   });
   User.associate = function(models) {
   	User.belongsTo(models.Role, {

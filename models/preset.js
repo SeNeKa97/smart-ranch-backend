@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
   	timestamps: false,
-    charset: 'utf8',
-    collate: 'utf8_unicode_ci'
+	freezeTableName: true,
+	tableName: 'presets'
   });
   Preset.associate = function(models) {
   	Preset.belongsTo( models.MeasurementType, {
