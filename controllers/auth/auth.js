@@ -61,7 +61,6 @@ module.exports = {
 					reject("User not found!")
 				});
 			else{
-				console.log(userfound.idRole);
 				return Token.findOne({
 					where:{
 						idUser: userfound.id
