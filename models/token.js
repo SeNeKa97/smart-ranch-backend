@@ -15,8 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
   	timestamps: false,
-    charset: 'utf8',
-    collate: 'utf8_unicode_ci'
+	freezeTableName: true,
+	tableName: 'tokens'
   });
   Token.associate = function(models) {
   	Token.belongsTo(models.User,{

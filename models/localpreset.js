@@ -14,7 +14,9 @@ module.exports = (sequelize, DataTypes) => {
     	allowNull: false
     }
   }, {
-  	timestamps: false
+  	timestamps: false,
+	freezeTableName: true,
+	tableName:'localpresets'
   });
   LocalPreset.associate = function(models) {
   	LocalPreset.belongsTo( models.MeasurementType, {
