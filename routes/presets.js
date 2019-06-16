@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/update', function(req, res, next) {
 	let bundle = req.body;
-	const token = body.token;
+	const token = req.body.token;
 
 	authController.hasRights(token, ROLE_REQUIRED)
 	.then(result => {
