@@ -21,11 +21,30 @@ router.get('/', function(req, res, next) {
 });
 
 
+router.get('/latest/:id', function(req, res, next) {
+	let id = req.params.id;
+
+	measurementController.fetchLatest(id)
+		.then(measurements => res.json(measurements))
+		.catch(err => res.status(400).json({error: err}));
+});
+
+
 router.get('/type/:id&:idtype', function(req, res, next) {
 	let id = req.params.id;
 	let idType = req.params.idtype;
 
 	measurementController.filterByType(id, idType)
+		.then(measurements => res.json(measurements))
+		.catch(err => res.status(400).json({error: err}));
+});
+
+
+router.get('/top/:id&:idtype', function(req, res, next) {
+	let id = req.params.id;
+	let idType = req.params.idtype;
+
+	measurementController.fetchTop(id, idType)
 		.then(measurements => res.json(measurements))
 		.catch(err => res.status(400).json({error: err}));
 });

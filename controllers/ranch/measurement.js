@@ -11,21 +11,11 @@ module.exports = {
 		});
 	},
 
+
 	createBundle(board, bundle){
 		let promises = [];
 		let time = new Date().toISOString().slice(0, 19).replace('T', ' ');
-		/*
-		for (let i=2;i<7;i++){
-			
-			promises = Measurement.create({
-				idType: i,
-				idBoard: board,
-				timestamp: time,
-				value: bundle[i-2]
-			})
 
-			
-		}*/
 		promises[0] =  Measurement.create({
 			idType: 2,
 			idBoard: board,
@@ -66,6 +56,7 @@ module.exports = {
 		.findAll();
 	},
 
+
 	getById(id){
 		return Measurement
 		.findOne({
@@ -74,6 +65,7 @@ module.exports = {
 			}
 		});
 	},
+
 
 	filterByType(idBoard, idType){
 		return Measurement
@@ -85,6 +77,7 @@ module.exports = {
 		});
 	},
 
+
 	filterByPeriod(idBoard, timeFrom, timeTo){
 		return Measurement
 		.findAll({
@@ -95,6 +88,71 @@ module.exports = {
             		$lt: timeTo
         		}
 			}
+		});
+	},
+
+	fetchTop(idBoard, idType){
+		return Measurement
+		.findAll({
+			where: {
+				idType: idType,
+				idBoard: idBoard				
+			},
+			limit: 20,
+			order: [ [ 'timestamp', 'DESC' ]]
+		})
+		.then(result=>result.reverse());
+	},
+
+	fetchLatest(idBoard){
+		let results = [];
+
+		results[0] = Measurement.findOne({
+			where: {
+				idBoard: idBoard,
+				idType: 2
+			},
+			order: [[ 'id', 'DESC' ]]
+		})
+		results[1] = Measurement.findOne({
+			where: {
+				idBoard: idBoard,
+				idType: 3
+			},
+			order: [[ 'id', 'DESC' ]]
+		})
+		results[2] = Measurement.findOne({
+			where: {
+				idBoard: idBoard,
+				idType: 4
+			},
+			order: [[ 'id', 'DESC' ]]
+		})
+		results[3] = Measurement.findOne({
+			where: {
+				idBoard: idBoard,
+				idType: 5
+			},
+			order: [[ 'id', 'DESC' ]]
+		})
+		results[4] = Measurement.findOne({
+			where: {
+				idBoard: idBoard,
+				idType: 6
+			},
+			order: [[ 'id', 'DESC' ]]
+		})
+
+		return Promise.all(results).then(values=>{
+			let measurements = {
+				temperature: values[0].value,
+				humidity: values[1].value,
+				luminosity: values[2].value,
+				water_level: values[3].value,
+				food_level: values[4].value,
+			};
+
+			return measurements;
 		});
 	},
 
