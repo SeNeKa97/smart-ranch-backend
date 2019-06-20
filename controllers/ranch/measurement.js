@@ -13,6 +13,7 @@ module.exports = {
 
 
 	createBundle(board, bundle){
+		
 		let promises = [];
 		let time = new Date().toISOString().slice(0, 19).replace('T', ' ');
 
@@ -20,31 +21,31 @@ module.exports = {
 			idType: 2,
 			idBoard: board,
 			timestamp: time,
-			value: bundle[0]
+			value: bundle["temperature"]
 		});
 		promises[1] =  Measurement.create({
 				idType: 3,
 				idBoard: board,
 				timestamp: time,
-				value: bundle[1]
+				value: bundle["humidity"]
 		});
 		promises[2] = Measurement.create({
 				idType: 4,
 				idBoard: board,
 				timestamp: time,
-				value: bundle[2]
+				value: bundle["luminosity"]
 		});
 		promises[3] =  Measurement.create({
 				idType: 5,
 				idBoard: board,
 				timestamp: time,
-				value: bundle[3]
+				value: bundle["water_level"]
 		});
 		promises[4] =  Measurement.create({
 				idType: 6,
 				idBoard: board,
 				timestamp: time,
-				value: bundle[4]
+				value: bundle["food_level"]
 		});
 
 		return Promise.all(promises);
