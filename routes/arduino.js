@@ -37,11 +37,7 @@ router.post('/', function(req, res, next) {
 
 						preset.wasteDelay = result[10].value
 
-						let bundle = [body.temperature,
-									  body.humidity,
-									  body.luminosity,
-									  body.waterLevel,
-									  body.foodLevel];
+						let bundle = body;
 
 						measurementController.createBundle(board.id, bundle)
 							.catch(err => res.json({error: err}));
