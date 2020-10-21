@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "1234",
-    "database": "rnch",
-    "host": "127.0.0.1",
+    "username": "sql7372222",
+    "password": "VrndycmS4N",
+    "database": "sql7372222",
+    "host": "sql7.freemysqlhosting.net",
     "dialect": "mysql",
     "define": {
         "charset": "utf8",
@@ -15,10 +15,10 @@
     "timezone": "+03:00"
   },
   "test": {
-    "username": "root",
-    "password": "1234",
-    "database": "rnch",
-    "host": "127.0.0.1",
+    "username": "sql7372222",
+    "password": "VrndycmS4N",
+    "database": "sql7372222",
+    "host": "sql7.freemysqlhosting.net",
     "dialect": "mysql",
     "define": {
         "charset": "utf8",
@@ -30,10 +30,10 @@
     "timezone": "+03:00"
   },
   "production": {
-    "username": "root",
-    "password": "1234",
-    "database": "rnch",
-    "host": "127.0.0.1",
+    "username": "sql7372222",
+    "password": "VrndycmS4N",
+    "database": "sql7372222",
+    "host": "sql7.freemysqlhosting.net",
     "dialect": "mysql",
     "define": {
         "charset": "utf8",
