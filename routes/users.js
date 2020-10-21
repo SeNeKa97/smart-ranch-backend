@@ -29,15 +29,14 @@ router.get('/role/:idRole', function(req, res, next) {
 		.then(user => res.json(user))
 		.catch(err => res.status(400).json({error: err}));
 });
-/*
+
 router.post('/creds/', function(req, res, next) {
 	const body = req.body;
 
-	userController.getByCredentials(body.name, body.passwordHash)
-		.then(users => res.json(users))
+	userController.create(body.name, body.password, body.idRole)
 		.catch(err => res.status(400).json({error: err}));
 });
-*/
+
 
 router.post('/update', function(req, res, next) {
 	const body = req.body;
